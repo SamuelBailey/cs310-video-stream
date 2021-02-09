@@ -4,6 +4,8 @@ import math
 import pickle
 import sys
 
+import numpy as np
+
 max_length = 65000
 host = sys.argv[1]
 port = 5000
@@ -20,6 +22,22 @@ while ret:
     if retval:
         # convert to byte array
         buffer = buffer.tobytes()
+
+
+        # Display the image on the client side
+        frame = np.frombuffer(buffer, dtype=np.uint8)
+        frame = frame.reshape(frame.shape[0], 1)
+
+        frame = cv2.imdecode(frame, cv2.IMREAD_COLOR)
+        frame = cv2.flip(frame, 1)
+        
+        if frame is not None and type(frame) == np.ndarray:
+            cv2.imshow("Sender", frame)
+            if cv2.waitKey(1) == 27:
+                break
+
+
+
         # get size of the frame
         buffer_size = len(buffer)
 

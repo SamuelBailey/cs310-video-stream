@@ -3,7 +3,7 @@ import socket
 import pickle
 import numpy as np
 
-host = "0.0.0.0"
+host = "127.0.0.1"
 port = 5000
 max_length = 65540
 
@@ -40,7 +40,7 @@ while True:
             frame = cv2.flip(frame, 1)
             
             if frame is not None and type(frame) == np.ndarray:
-                cv2.imshow("Stream", frame)
+                cv2.imshow("Receiver", frame)
                 if cv2.waitKey(1) == 27:
                     break
                 
