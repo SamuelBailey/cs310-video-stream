@@ -1,0 +1,1 @@
+ip netns exec space2 python3 udp_server.py

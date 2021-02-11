@@ -1,0 +1,1 @@
+ip netns exec space3 python3 udp_client.py 192.168.0.30
